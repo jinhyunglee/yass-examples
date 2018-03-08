@@ -1,0 +1,57 @@
+# Sample configuration file, for a complete reference see
+# examples/config_sample_complete.yaml
+
+# Sample configuration file, for a complete reference see
+# examples/config_sample_complete.yaml
+
+data:
+  root_folder: /hdd/data/peter/ejbin
+  recordings: fullej.dat
+  geometry: 512coords.txt
+
+clustering:
+  clustering_method: location
+  masking_threshold: [0.9, 0.5]
+  n_split: 5
+  max_n_spikes: 10000
+  
+resources:
+  max_memory: 100000000
+
+recordings:
+  dtype: int16
+  sampling_rate: 20000
+  n_channels: 512
+  spatial_radius: 70
+  spike_size_ms: 1.5
+  format: long
+
+preprocess:
+  filter: True
+  dtype: float32
+  templates_partial_data: 1
+  whiten_batchwise: False
+
+spikes:
+  detection: nn
+  temporal_features: 3
+
+deconvolution:
+  n_rf: 1.5
+  threshold_a: 0.2
+  threshold_dd: 50
+  n_explore: 2 
+  upsample_factor: 3
+  n_features: 3
+  max_spikes: 20
+
+neural_network_detector:
+  filename: /ssd/data/peter/yass-examples/test/detect_nn1.ckpt
+  threshold_spike: 0.5
+
+neural_network_triage:
+  filename: /ssd/data/peter/yass-examples/test/triage_nn1.ckpt
+  threshold_collision: 0.5
+
+neural_network_autoencoder:
+  filename: /ssd/data/peter/yass-examples/test/ae_nn1.ckpt
